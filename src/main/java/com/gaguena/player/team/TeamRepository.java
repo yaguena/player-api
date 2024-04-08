@@ -14,9 +14,10 @@ public class TeamRepository {
     private JdbcTemplate jdbcTemplate;
     
     public int save(TeamData data) {
-        return jdbcTemplate.update(
+        var rows = jdbcTemplate.update(
                 "INSERT INTO TB_TEAM (TCODE, TNAME) VALUES(?,?)",
                 data.code(), data.name());
+        return rows;
     }
 
     public int remove(TeamData data) {
